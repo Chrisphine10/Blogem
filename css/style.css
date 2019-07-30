@@ -1,0 +1,122 @@
+@charset "ISO-8859-1";
+html, body {
+	height: 145%;
+	margin: 0px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	
+}
+
+.title{
+	color: white;
+	text-align: center;
+	padding-top: 10%;
+	background-color: rgba(53,110,161,0.5) !important;
+	border-radius: 5px;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding-bottom: 0px;	
+}
+@media only screen and (max-width: 800px) {
+	.title {
+		margin-left: 0px;
+		margin-right: 0px; 
+	}
+	li{
+	float: none;
+	}
+}
+h1{
+	font-size: 50px;
+	margin-bottom: 0px;
+}
+p{
+	margin-top: 0px;
+	font-size: 30px;
+}
+.btnCreate{
+	height: 50px;
+	width: 200px;
+	border: none;
+	border-radius: 10px;
+	color: black;
+	background: #ff7e57;
+	margin-top: 20px;
+	margin-bottom: 150px;
+	
+}
+.btnCreate:hover{
+	background: #356EA1;
+	}
+
+.footer ul{
+	color: white;
+	list-style: none;
+	
+	}
+.footer{
+	margin-left: 25%;
+	margin-right: 25%;
+	position: relative;
+	background-color: #202121;
+	}
+
+li{
+	float: left;
+	padding-left: 5%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+.signin{
+	width: 95%;
+	display: inline-block;
+	padding-top: 10px;
+	text-align: right;
+}
+.signin a{
+	color: white;
+	margin-top: 2%;
+	padding-left: 20px;
+	background-color: rgba(53,110,161,0.5) !important;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.page-1{
+	height: 50%;
+	background-image: url("../images/blog.jpg");
+	/*background-color: #2da4ad;*/
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	padding-bottom: 0px;
+}
+.page-2{
+	background-color: #b06a99;
+	height: 50%;
+	max-height: 50%;
+	overflow-y: scroll;
+}
+.terms{
+	
+}
+.privacy{
+	
+}
+.page-3{
+	background-color: #49c5b6;
+	height: 30%;
+}
+.bottom{
+	height: 50%;
+	align-content: center;
+	background-color: #202121;
+}
+.contactus{
+	width: 30%;
+	position: relative;
+}
+.text{
+	overflow-y: scroll;
+	max-height: 90%;
+	padding: 5%;
+	padding-bottom: 0%;
+	}

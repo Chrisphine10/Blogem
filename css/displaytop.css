@@ -1,0 +1,25 @@
+.grid-container{
+	display: flex;
+}
+.grid{
+	display: block;
+}
+.grid-1{
+	background-color: red;
+}
+.grid-2{	
+	background-color: blue;
+}
+.grid-3{
+	
+	background-color: green;
+}
+.grid-4{
+	background-color: black;
+}
+.grid-5{
+	background-color: yellow;
+}
+.grid-6{
+	background-color: violet;
+}
