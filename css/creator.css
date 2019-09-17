@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+
+.flexer {
+	display: grid;
+	background-color: rgba(53, 110, 161, 0.2) !important;
+	border-style: solid;
+	grid-gap: 1px;
+}
+
+.rowdefault{
+	grid-column: 1;
+	grid-row: 1;
+}
+.rowbasic{
+	grid-column: 2;
+	grid-row: 1;
+}
+.rowstandard{
+	grid-column: 1;
+	grid-row: 2;
+}
+.rowadvance{
+	grid-column: 2;
+	grid-row: 2;
+}
+img {
+	width: 200px;
+	height: 400px;
+	margin: 50px;
+	margin-top: 0px;
+	border-style: double;
+	border-radius: 5px;
+}
+html {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	background-image: url("../images/bgr1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+p {
+	margin-left: 50px;
+}

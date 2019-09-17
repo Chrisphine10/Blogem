@@ -1,19 +1,8 @@
-<?php
-session_start();
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<script type="text/javascript">
-$("li a").click(function(){
-    $('html, body').stop.animate({
-        scrollTop: $( $.attr(this, 'here') ).offset().top
-    }, 1000);
-    return false;
-}); 
-</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/css/mdb.min.css" rel="stylesheet">
 <title>Blogem.net - Shout loud your opinion. Setting free the
 	information.</title>
 </head>
@@ -22,67 +11,62 @@ $("li a").click(function(){
 	<div class="page-1">
 
 		<div>
-	
+
 			<div class="signin" id="signin">
+			<?php
+session_start();
+if (isset($_SESSION['loggedin'])) {
+    ?>
 			<div id="hidden">
-			<a href="login.php">Log In</a> <a href="register.php">Register</a>
-			</div>
+					<a href="session/logoutsession.php">Log Out</a>
 			<?php
-			echo "<script >
-			 window.onload = function() {
-             document.getElementById('logout').style.display = 'none';
-             };
-			    </script>";
-			?>
-				<a href="logoutsession.php" id="logout">Log Out</a>
+} else {
+    ?> 
+			<a href="auth/login.php">Log In</a> <a href="auth/register.php">Register</a>
+			    <?php
+}
+?>
 			</div>
+			</div> <div class="floater" >
+					<button style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); outline: none; margin: 30px; padding: 10px; border: none; border-radius: 3px; background-color: #ff7e57">
+					<strong>SEE THE FEEDS</strong></button>
+					</div>
 			<div class="title">
-			<?php
-			if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
-			   echo "<script type=\"text/javascript\">
-                   $(document).ready(function() {
-                    promptLogin();
-                    });
-			        </script>";
-			   echo "<script>
-			 window.onload = function() {
-             document.getElementById('hidden').style.display = 'none';
-             };
-			    </script>";
-			}
-            ?>
-				<h1>Welcome to the Blogem'</h1>
+				<h1>Welcome to Blog'em</h1>
 				<p>Shout loud your opinion!</p>
 				<form action="createblog.php">
 					<button class="btnCreate">Create a Blog</button>
+					<br>
 				</form>
 				<br>
 			</div>
 		</div>
 	</div>
 	<div class="page-2">
-	<?php require('topblogs.php'); ?>
+	<?php require('others/topblogs.php'); ?>
 	</div>
 	<div class="page-3">
 		<div class="terms">
-	<?php require('termsandconditions.php'); ?>
+	<?php require('others/termsandconditions.php'); ?>
 	</div>
 		<div class="privacy">
-	<?php require('privacypolicy.php'); ?>
+	<?php require('others/privacypolicy.php'); ?>
 	</div>
 	</div>
 	<div class="bottom">
-		<div class="contactus">
-    		<?php require('contactus.php'); ?>
-    	</div>
 		<div class="footer">
-			<ul>
-				<li><a href="aboutus.php">About Us</a></li>
-				<li><a href="work.php">Work with us</a></li>
-				<li><a href="termsandconditions.php">Terms and conditions</a></li>
-				<li><a href="privacypolicy.php">Privacy Policy</a></li>
-			</ul>
+			<div class="contactus">
+    		<?php require('others/contactus.php'); ?>
+    	   </div>
 		</div>
+		<div class="aboutus">
+				<ul>
+				<li>About Us</li>
+				<li>Terms and Conditions</li>
+				<li>Privacy Policy</li>
+				<li>Top Posts</li>
+				</ul>
+			</div>
 	</div>
 </body>
 </html>

@@ -1,108 +1,3 @@
-  <?php
-if (isset($_POST['email'])) {
-
-    // EDIT THE 2 LINES BELOW AS REQUIRED
-    $email_to = "xphine10@gmail.com";
-    $email_subject = "Blogem Contact Us";
-
-    function died($error)
-    {
-        echo " <script>
-        window.onload = function()
-        {document.body.scrollTop = document.documentElement.scrollTop = 0;};
-        </script>";
-        // your error code can go here
-        echo "We are very sorry, but there were error(s) found with the form you submitted. ";
-        echo "These errors appear below.<br /><br />";
-        echo $error . "<br /><br />";
-        echo "Please go back and fix these errors.<br /><br />";
-        ?>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="/css/default.css">
-</head>
-<body>
-	<div class="container">
-			<input value="Send Again" type="submit" onClick="history.go(-1);">
-	</div>
-</body>
-</html>
-<?php
-        die();
-    }
-
-    // validation expected data exists
-    if (! isset($_POST['name']) || ! isset($_POST['email']) || ! isset($_POST['subject'])) {
-        died('We are sorry, but there appears to be a problem with the form you submitted.');
-    }
-
-    $name = $_POST['name']; // required
-    $email_from = $_POST['email']; // required
-    $subject = $_POST['subject']; // required
-
-    $error_message = "";
-    $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
-
-    if (! preg_match($email_exp, $email_from)) {
-        $error_message .= 'The Email Address you entered does not appear to be valid.<br />';
-    }
-
-    $string_exp = "/^[A-Za-z .'-]+$/";
-
-    if (! preg_match($string_exp, $name)) {
-        $error_message .= 'The Name you entered does not appear to be valid.<br />';
-    }
-
-    if (strlen($subject) < 2) {
-        $error_message .= 'The Subject you entered do not appear to be valid.<br />';
-    }
-
-    if (strlen($error_message) > 0) {
-        died($error_message);
-    }
-
-    $email_message = "Form details below.\n\n";
-
-    function clean_string($string)
-    {
-        $bad = array(
-            "content-type",
-            "bcc:",
-            "to:",
-            "cc:",
-            "href"
-        );
-        return str_replace($bad, "", $string);
-    }
-
-    $email_message .= "Name: " . clean_string($name) . "\n";
-    $email_message .= "Email: " . clean_string($email_from) . "\n";
-    $email_message .= "Subject: " . clean_string($subject) . "\n";
-
-    // create email headers
-    $headers = 'From: ' . $email_from . "\r\n" . 'Reply-To: ' . $email_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-    @mail($email_to, $email_subject, $email_message, $headers);
-    ?>
-<!-- success html here -->
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="/css/default.css">
-</head>
-<body>
-	<div class="container">
-		<h1>Thank you!</h1>
-		<p>We will get back to you as soon as possible.</p>
-		<form action="index.php">
-			<input value="New Comment" type="submit">
-		</form>
-	</div>
-</body>
-</html>
-<?php
-} else {
-    ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
 <link rel="stylesheet" type="text/css" href="/css/default.css">
@@ -110,15 +5,12 @@ if (isset($_POST['email'])) {
 </head>
 <body>
 	<div class="container">
-		<h2 style="text-decoration: underline; padding-bottom: 25px;">Talk to
-			us</h2>
-		<form action="index.php" method="post">
-
-			<label for="name">Full Name</label><br> <input type="text" id="name"
-				name="name" placeholder="Your name.."><br> <label for="email">Email
-				Address</label><br> <input type="text" id="email" name="email"
-				placeholder="Your email address.."><br> <label for="country">Country</label><br>
-			<select id="country" name="country" class="form-control">
+		<h2 style="text-decoration: underline; padding-bottom: 25px;">Contact Us</h2>
+		<form action="models/response.php" method="post">
+			<input type="text" id="name" required="required"
+				name="name" placeholder="Your name.."><br> <input type="text" id="email" name="email"
+				placeholder="Your email address.."><br>
+			<select required="required" id="country" name="country" class="form-control">
 				<option value="Afghanistan">Afghanistan</option>
 				<option value="Åland Islands">Islands</option>
 				<option value="Albania">Albania</option>
@@ -378,16 +270,22 @@ if (isset($_POST['email'])) {
 				<option value="Yemen">Yemen</option>
 				<option value="Zambia">Zambia</option>
 				<option value="Zimbabwe">Zimbabwe</option>
-			</select><br> <label for="subject">Subject</label><br>
-			<textarea id="subject" name="subject" placeholder="Write something.."
+			</select><br>
+			<textarea id="subject" name="subject" required="required" placeholder="Write something.."
 				style="height: 200px"></textarea>
 			<br> <input type="submit" name="Submit" value="send">
 
 		</form>
+		<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
+<script>
+$.post('https://mailthis.to/xphine10@gmail.com', {
+    email: email,
+    _subject: name country,
+    message: comment
+}).then(function () {
+    location.href = 'https://mailthis.to/confirm'
+});
+    </script>
 	</div>
 </body>
-</html>
-<?php
-    ;
-}
-?>
